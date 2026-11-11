@@ -25,6 +25,7 @@ import {BlockquoteWithCommentId} from './blockquoteWithCommentId'
 import {TaskLink, LINK_HTML_ATTRIBUTES} from './taskLink'
 import {createClipboardParser, fillRequiredContent, repairSliceContent} from './contentRepair'
 import {htmlHasFormatting} from './clipboardHtml'
+import {createClipboardTextSerializer} from './clipboardText'
 
 import Commands from './commands'
 import suggestionSetup from './suggestion'
@@ -232,6 +233,7 @@ export function createEditorExtensions(deps: EditorExtensionDeps): Extensions {
 					key: new PluginKey('pasteHandler'),
 					props: {
 						clipboardParser: createClipboardParser(this.editor.schema),
+						clipboardTextSerializer: createClipboardTextSerializer(this.editor.schema),
 						transformPasted: slice => repairSliceContent(slice),
 
 						handlePaste: (view, event) => {

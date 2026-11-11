@@ -610,7 +610,8 @@ function onEnter(event: KeyboardEvent) {
 }
 
 async function doCmd() {
-	if (results.value.length === 1 && results.value[0].items.length === 1) {
+	// With a command selected the results are hidden, so the query is the command's input
+	if (selectedCmd.value === null && results.value.length === 1 && results.value[0].items.length === 1) {
 		const result = results.value[0]
 		doAction(result.type, result.items[0])
 		openTaskAfterCreate = false

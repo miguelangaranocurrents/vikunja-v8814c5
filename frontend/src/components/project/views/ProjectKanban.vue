@@ -354,6 +354,14 @@ const DRAG_OPTIONS = {
 	dragClass: 'task-dragging',
 	delayOnTouchOnly: true,
 	delay: 1000,
+	// Scroll the board while dragging near its edges. The browser's native drag
+	// autoscroll only reacts within a few pixels of the edge (and not at all in
+	// some browsers), so let sortable drive it with a usable hot zone.
+	scroll: true,
+	forceAutoScrollFallback: true,
+	scrollSensitivity: 100,
+	scrollSpeed: 20,
+	bubbleScroll: true,
 } as const
 
 const MIN_SCROLL_HEIGHT_PERCENT = 0.25
